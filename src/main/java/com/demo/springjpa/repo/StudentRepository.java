@@ -2,6 +2,9 @@ package com.demo.springjpa.repo;
 
 import com.demo.springjpa.entity.Student;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Meta;
 import org.springframework.data.jpa.repository.Modifying;
@@ -49,4 +52,6 @@ public interface StudentRepository extends JpaRepository<Student,Long> {
             nativeQuery = true
     )
     int updateStudentNameByEmailAddress(String firstName,String emailId);
+
+    Page<Student> getall(Pageable request);
 }
